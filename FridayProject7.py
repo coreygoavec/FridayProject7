@@ -30,7 +30,7 @@ class UserPortal:
 
         self.btn_signup = tk.Button(self.sign_up_window, text="Sign Up", command=self.signup)
         self.btn_signup.grid(row=3, columnspan=2)
-        
+
         # Sign-in window
         self.sign_in_window = tk.Toplevel(master)
         self.sign_in_window.title("Sign In")
@@ -62,7 +62,7 @@ class UserPortal:
             return True
         else:
             return False
-        
+
     def signup(self):
         email = self.email_entry.get()
         password = self.password_entry.get()
@@ -79,3 +79,30 @@ class UserPortal:
         else:
             self.db[email] = password
             messagebox.showinfo("Success", "Sign up successful.")
+
+    def signin(self):
+        email = self.email_login_entry.get()
+        password = self.password_login_entry.get()
+
+        if not email or not password:
+            messagebox.showerror("Error", "All fields are required.")
+        elif email in self.db and self.db[email] == password:
+            messagebox.showinfo("Success, Log in successful.")
+        else:
+            messagebox.showerror("Error", "Email or password incorrect.")
+
+    def show_signup(self):
+        self.sign_up_window.deiconify()
+        self.sign_in_window.withdraw()
+
+    def show_signin(self):
+        self.sign_in_window.deiconify()
+        self.sign_up_window.withdraw()
+
+def main():
+    root = tk.Tk()
+    app = UserPortal(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
