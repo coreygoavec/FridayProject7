@@ -62,3 +62,20 @@ class UserPortal:
             return True
         else:
             return False
+        
+    def signup(self):
+        email = self.email_entry.get()
+        password = self.password_entry.get()
+        confirm_password = self.confirm_password_entry.get()
+
+        if not email or not password or not confirm_password:
+            messagebox.showerror("Error", "All fields are required.")
+        elif not self.validate_email(email):
+            messagebox.showerror("Error", "Invalid email address.")
+        elif password != confirm_password:
+            messagebox.showerror("Error", "Passwords do not match.")
+        elif email in self.db:
+            messagebox.showerror("Error", "Email already exists.")
+        else:
+            self.db[email] = password
+            messagebox.showinfo("Success", "Sign up successful.")
