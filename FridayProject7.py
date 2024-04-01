@@ -30,3 +30,28 @@ class UserPortal:
 
         self.btn_signup = tk.Button(self.sign_up_window, text="Sign Up", command=self.signup)
         self.btn_signup.grid(row=3, columnspan=2)
+        
+        # Sign-in window
+        self.sign_in_window = tk.Toplevel(master)
+        self.sign_in_window.title("Sign In")
+        self.sign_in_window.withdraw()
+
+        self.lbl_email_login = tk.Label(self.sign_in_window, text="Email:")
+        self.lbl_email_login.grid(row=0, column=0)
+        self.email_login_entry = tk.Entry(self.sign_in_window)
+        self.email_login_entry.grid(row=0, column=1)
+
+        self.lbl_password_login = tk.Label(self.sign_in_window, text="Password:")
+        self.lbl_password_login.grid(row=1, column=0)
+        self.password_login_entry = tk.Entry(self.sign_in_window, show="*")
+        self.password_login_entry.grid(row=1, column=1)
+
+        self.btn_signin = tk.Button(self.sign_in_window, text="Sign In", command=self.signin)
+        self.btn_signin.grid(row=2, columnspan=2)
+
+        self.btn_show_signup = tk.Button(master, text="Show Sign Up", command=self.show_signup)
+        self.btn_show_signup.pack()
+
+        self.btn_show_signin = tk.Button(master, text="Show Sign In", command=self.show_signin)
+        self.btn_show_signin.pack()
+        
