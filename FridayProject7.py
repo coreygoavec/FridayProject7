@@ -54,4 +54,11 @@ class UserPortal:
 
         self.btn_show_signin = tk.Button(master, text="Show Sign In", command=self.show_signin)
         self.btn_show_signin.pack()
-        
+
+    def validate_email(self, email):
+        # Regular expression for email validation
+        regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        if re.match(regex, email):
+            return True
+        else:
+            return False
